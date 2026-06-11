@@ -1,5 +1,5 @@
+//ALP C prog in Keil to find Factorial
 #include <lpc214x.h>
-
 int main(void)
 {
     volatile int i, j, temp;
