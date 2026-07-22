@@ -1,66 +1,12 @@
 1.
-#define INF 999
-#define MAX 100
-int p[MAX], c[MAX][MAX], t[MAX][2];
-int find(int v)
-{
-    while (p[v])
-        v = p[v];
-    return v;
-}
-void union1(int i, int j)
-{
-    p[j] = i;
-}
-void kruskal(int n)
-{
-    int i, j, k, u, v, min, res1, res2, sum = 0;
-    for (k = 1; k < n; k++)
-    {
-        min = INF;
-        for (i = 1; i < n - 1; i++)
-        {
-            for (j = 1; j <= n; j++)
-            {
-                if (i == j) continue;
-                if (c[i][j] < min)
-                {
-                    u = find(i);
-                    v = find(j);
-                    if (u != v)
-                    {
-                        res1 = i;
-                        res2 = j;
-                        min = c[i][j];
-                    }
-                }
-            }
-        }
-        union1(res1, find(res2));
-        t[k][1] = res1;
-        t[k][2] = res2;
-        sum = sum + min;
-    }
-    printf("\nCost of spanning tree is=%d", sum);
-    printf("\nEdgesof spanning tree are:\n");
-    for (i = 1; i < n; i++)
-        printf("%d -> %d\n", t[i][1], t[i][2]);
-}
-int main()
-{
-    int i, j, n;
-    printf("\nEnter the n value:");
-    scanf("%d", & n);
-    for (i = 1; i <= n; i++)
-        p[i] = 0;
-    printf("\nEnter the graph data:\n");
-    for (i = 1; i <= n; i++)
-        for (j = 1; j <= n; j++)
-            scanf("%d", & c[i][j]);
-    kruskal(n);
-    return 0;
-}
+Enter the n value:5
 
+Enter the graph data:
+1 3 4 6 2
+1 7 6 9 3
+5 2 8 99 45
+1 44 66 33 6
+12 4 3 2 0
 
 ---
 
@@ -74,11 +20,6 @@ Enter the graph data:
 0 2 8 5
 
 Enter the souce node:4
-
-4 -> 1 sum=0
-4 -> 2 sum=2
-1 -> 3 sum=4
-Cost=4
 ---
 3a.
 Enter the n value:4
@@ -87,12 +28,6 @@ Enter the graph data:
 2 0 999 999
 999 7 0 1
 6 999 999 0
-
-Shortest path matrix
-0 10 3 4
-2 0 5 6
-7 7 0 1
-6 16 9 0
 
 ---
 
@@ -103,12 +38,6 @@ Enter the graph data:
 0 0 0 1
 0 0 0 0
 1 0 1 0
-
-Resultant path matrix
-1 1 1 1
-1 1 1 1
-0 0 0 0
-1 1 1 1
 
 ---
 
@@ -121,9 +50,48 @@ Enter the graph data:
 444  678 235 0
 
 Enter the souce node:1
-
-Shortest distance from 1 to 1 is 444
-Shortest distance from 1 to 2 is 247
-Shortest distance from 1 to 3 is 247
-Shortest distance from 1 to 4 is 12
 ---
+5.
+
+Enter the n value:6
+
+Enter the graph data:
+0 0 1 1 0 0
+0 0 0 1 1 0
+0 0 0 1 0 1
+0 0 0 0 0 1
+0 0 0 0 0 1
+0 0 0 0 0 0
+---
+6.
+Enter the no. of objects:4
+
+Enter the knapsack capacity:5
+
+Enter profit followed by weight:
+12 3
+43 5
+45 2
+55 3
+---
+
+7.
+Enter the number of objects: 4
+Enter the objects' weights: 56 78 98 78
+Enter the objects' profits: 23 45 76 78
+Enter the maximum capacity: 100
+---
+
+8.
+Enter the n value:9
+Enter the set in increasing order:1 2 3 4 5 6 7 8 9
+Enter the max subset value:9
+
+---
+
+9,10,11
+Run Py and get the graph.
+
+---
+12.
+Enter the number of queens: 4
